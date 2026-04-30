@@ -1,4 +1,4 @@
-# QuadAssesment
+# QuadAssessment
 ## Trivia Quiz
 
 ### Developer
