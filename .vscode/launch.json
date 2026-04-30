@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-App<assessment>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Quad.Assesment.App",
+            "projectName": "assessment",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
