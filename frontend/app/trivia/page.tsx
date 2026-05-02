@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { Question, Result } from '../interfaces/trivia';
 import api from '../api/api';
+import QuestionCard from '../components/QuestionCard';
+import AnswerButton from '../components/AnswerButton';
+import NextButton from '../components/NextButton';
 
 export default function Questions() {
   const [questions, setQuestions] = useState<Question[]>([]); // State voor de vragenlijst
@@ -55,26 +58,33 @@ export default function Questions() {
 
   const question = questions[currentIndex];
 
-  return (
+return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-900 px-4">
       <div className="p-8 bg-zinc-800 rounded-2xl w-full max-w-xl">
 
-        <p className="text-indigo-400 text-sm uppercase mb-1">{question.category}</p>
-        <p className="text-zinc-400 text-sm mb-4">Question {currentIndex + 1} of {questions.length}</p>
-        <h2 className="text-white text-2xl font-bold mb-8">{question.question}</h2>
+        <QuestionCard
+          question={question.question}
+          category={question.category}
+          currentIndex={currentIndex}
+          total={questions.length}
+        />
 
         <div className="flex flex-col gap-3">
           {question.answers.map((answer, index) => (
-            <button key={index} onClick={() => handleAnswer(answer)} className={`p-4 rounded-xl font-semibold transition-all ${getButtonStyle(answer)}`}>
-              {answer}
-            </button>
+            <AnswerButton
+              key={index}
+              answer={answer}
+              onClick={() => handleAnswer(answer)}
+              style={getButtonStyle(answer)}
+            />
           ))}
         </div>
-        
+
         {result && (
-          <button onClick={handleNext} className="mt-4 w-full p-4 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 font-bold">
-            {currentIndex + 1 >= questions.length ? 'Finish' : 'Next Question →'}
-          </button>
+          <NextButton
+            onClick={handleNext}
+            isLast={currentIndex + 1 >= questions.length}
+          />
         )}
 
       </div>

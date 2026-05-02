@@ -9,17 +9,7 @@ import lombok.Data;
 @Data
 //mapped de JSON van de OpenTDB API naar een Java object
 public class TriviaQuestion {
-	@JsonProperty("type")
-    private String type;
-    
-    @JsonProperty("difficulty")
-    private String difficulty;
-    
-    @JsonProperty("category")
-    private String category;
-    
-    @JsonProperty("question")
-    private String question;
+    private String type, difficulty, category, question;
     
     @JsonProperty("correct_answer")
     private String correctAnswer; 

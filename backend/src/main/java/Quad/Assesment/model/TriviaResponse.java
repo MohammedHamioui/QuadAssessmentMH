@@ -13,7 +13,6 @@ public class TriviaResponse {
 	@JsonProperty("response_code")
 	private int responseCode;
 		    
-	@JsonProperty("results")
 	private List<TriviaQuestion> results;
 
 }
